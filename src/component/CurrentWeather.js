@@ -12,6 +12,15 @@ const CurrentWeather = () =>{
     const [unit, setUnit] = useState('C');
     const navigate = useNavigate();
 
+    useEffect(()=> {
+        const storedWeather = localStorage.getItem('weatherDate');
+        if(storedWeather){
+            setWeather(JSON.parse(storedWeather));
+        } else {
+            getCurrentLocation();
+        }
+    }, []);
+
     const getCurrentLocation = () => {
         if(navigator.geolocation){
             navigator.geolocation.getCurrentPosition(
@@ -33,6 +42,7 @@ const CurrentWeather = () =>{
             try {
                const response = await axios.get(`${url}/current.json?key=${api_key}&q=${location.latitude},${location.longitude}`);
                 setWeather(response.data);
+                localStorage.setItem('weatherData', JSON.stringify(response.data));
             } catch(error) {
                 setError(error.message);
             }

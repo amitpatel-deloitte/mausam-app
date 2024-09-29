@@ -3,17 +3,10 @@ import axios from 'axios';
 import { api_key, url } from './ApiInfo';
 
 const preDefinedCities = [
-    'New Delhi',
-    'Mumbai',
-    'Kolkata',
-    'Bangalore',
-    'Pune',
-    'Chennai',
-    'Varanasi',
-    'Vizag',
-    'Jaipur',
-    'Lucknow',
-    'Gurugram'
+    'New Delhi', 'New York', 'Noida','Mumbai', 'Melbourne', 'Moscow',
+    'Kolkata', 'Kota','Bangalore', 'Bankok', 'Pune', 'Paris',
+    'Chennai', 'Cape Town', 'Varanasi', 'Vizag','Jaipur', 'Jakarta',
+    'Lucknow', 'London', 'Gurugram','Dubai'
 ]
 
 function SearchCity() {
