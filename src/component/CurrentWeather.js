@@ -8,6 +8,7 @@ import Hashedin from './assets/logo-hashedin.png'
 const CurrentWeather = () =>{
     const [location,setLocation] = useState({latitude:null, longitude:null});
     const [weather, setWeather] = useState(null);
+    const [error, setError] = useState(null);
     const [unit, setUnit] = useState('C');
     const navigate = useNavigate();
 
@@ -33,11 +34,20 @@ const CurrentWeather = () =>{
                const response = await axios.get(`${url}/current.json?key=${api_key}&q=${location.latitude},${location.longitude}`);
                 setWeather(response.data);
             } catch(error) {
-                console.error('Error fetching data', error);
+                setError(error.message);
             }
         };
         fetchCurrentWeather();
     },[location.latitude, location.longitude]);
+
+
+    if(error){
+        return <p> Error : {error} </p>
+    }
+
+    if(!weather){
+        return <p> Loading Weather Data .....</p>
+    }
 
     const toggleUnit = () => {
         setUnit(unit === 'C' ? 'F' : 'C');
