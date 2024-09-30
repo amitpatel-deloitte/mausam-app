@@ -40,8 +40,8 @@ function SearchCity() {
                    const response = await axios.get(`${url}/current.json?key=${api_key}&q=${cityName}`);
                     setCityWeather(response.data);
                 } catch(error) {
-                    console.error('Error fetching data', error);
-                    setError('Error fetching weather data..');
+                    alert(' City not Found');
+                    setError('Error fetching weather data..', error);
                 }
     };
 
@@ -70,6 +70,7 @@ function SearchCity() {
         </ul>
         </div>
       )}
+
       {cityWeather && cityWeather.location && cityWeather.current && (
       <div className='city-weather-info'>
         <h3>{cityWeather.location.name}</h3>

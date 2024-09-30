@@ -10,17 +10,6 @@
   justify-content: center;
   padding: 20px;
 }
-.forcaset-container{
-  background-image: url('./component/assets/image.webp');
-  background-size: cover;
-  background-position: center;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
 
 .search-container {
   background-size: cover;
@@ -197,7 +186,7 @@
 .forecast-title{
 font-size:  3rem;
 font-weight: bold;
-color: #4A90E2;
+color: #22323F;
 text-align: center;
 margin: 20px 0;
 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
