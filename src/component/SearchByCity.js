@@ -31,13 +31,13 @@ function SearchCity() {
 
     const handleSuggestionClick = (cityName) => {
         setCity(cityName);
-        setSuggestions([]);
         searchWeatherByCity(cityName);
+        setSuggestions([]);
     };
 
     const searchWeatherByCity = async (cityName) => {
                 try {
-                   const response = await axios.get(`${url}/current.json?key=${api_key}&q=${city}`);
+                   const response = await axios.get(`${url}/current.json?key=${api_key}&q=${cityName}`);
                     setCityWeather(response.data);
                 } catch(error) {
                     console.error('Error fetching data', error);

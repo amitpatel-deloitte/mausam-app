@@ -6,14 +6,14 @@ import Mausam from './assets/Mausam.png'
 import Hashedin from './assets/logo-hashedin.png'
 
 const CurrentWeather = () =>{
-    const [location,setLocation] = useState({latitude:null, longitude:null});
+    const [location,setLocation] = useState({latitude:'25.3176', longitude:'82.9739'});
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState(null);
     const [unit, setUnit] = useState('C');
     const navigate = useNavigate();
 
     useEffect(()=> {
-        const storedWeather = localStorage.getItem('weatherDate');
+        const storedWeather = localStorage.getItem('weatherData');
         if(storedWeather){
             setWeather(JSON.parse(storedWeather));
         } else {
@@ -56,7 +56,7 @@ const CurrentWeather = () =>{
     }
 
     if(!weather){
-        return <p> Loading Weather Data .....</p>
+        return <p style={{textAlign: 'center'}}> Loading Weather Data .....</p>
     }
 
     const toggleUnit = () => {
@@ -70,14 +70,16 @@ const CurrentWeather = () =>{
                 <h2 className='by-header'>By</h2>
                 <img src={Hashedin} alt="hashedin" className='header-image2'/>
             </div>
+            
             <button className={ `unit-toggle ${unit === 'C' ? 'inactive':''}`} onClick={toggleUnit}>
                 {unit === 'C' ? 'Switch to Fahrenheit' : 'Switch to Celsius'}
-                </button>
+            </button>
 
-            { weather && (   
+
+            {weather && (   
                 <>
                 <div className='weather-info'>
-                    <h2>{weather.location.name}</h2>
+                    <p>{weather.location.name}</p>
                     <p>{weather.current.condition.text}</p>
                     <p>
                         {unit === 'C'
@@ -92,7 +94,8 @@ const CurrentWeather = () =>{
                 </div>
                 </> 
             )}
-<           div className='forecast-buttons'>
+
+            <div className='forecast-buttons'>
                 <button onClick={() => navigate('/search')}> Search By City </button>
             </div>
           
