@@ -6,7 +6,7 @@ import Mausam from './assets/Mausam.png'
 import Hashedin from './assets/logo-hashedin.png'
 
 const CurrentWeather = () =>{
-    const [location,setLocation] = useState({latitude:'25.3176', longitude:'82.9739'});
+    const [location,setLocation] = useState({latitude:'28.644800', longitude:'77.216721'}); // New Delhi is default
     const [weather, setWeather] = useState(null);
     const [error, setError] = useState(null);
     const [unit, setUnit] = useState('C');
